@@ -1,0 +1,14 @@
+/* Tailwind CSS Custom Fonts */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ABCReproVariable */
+@font-face {
+    font-family: 'ABCReproVariable';
+    src: url('/fonts/ABCReproVariable.ttf') format('ttf');
+  }
+  
+  body {
+    @apply bg-eigen-dark-blue
+  }

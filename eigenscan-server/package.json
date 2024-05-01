@@ -1,0 +1,19 @@
+{
+  "name": "eigenscanner-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.42.7",
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5",
+    "eigenevents": "git+https://github.com/gowthamsundaresan/EigenEvents.git",
+    "puppeteer": "^22.7.1",
+    "web3": "^4.8.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5"
+  }
+}
