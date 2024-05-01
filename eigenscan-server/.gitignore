@@ -1,5 +1,9 @@
 # env files
 .env
 
+# node modules
+/node_modules
+
 # misc.
 yarn-error.log
+.prettierrc
