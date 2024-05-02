@@ -186,7 +186,7 @@ export default function Home() {
 
     return (
         <div className="text-white">
-            <div className="px-24">
+            <div className="lg:px-24 md:px-16 px-4">
                 <div className="flex items-center mt-4">
                     <img src="markDarkA.svg" alt="Icon" className="mr-4 max-w-12" />
                     <div className="flex items-center w-full px-1 py-1 bg-white border rounded-md text-xs font-repro">
@@ -280,24 +280,26 @@ export default function Home() {
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
-                    <div className="overflow-x-auto">
-                        <div className="mt-8 mb-8 flex flex-row gap-2">
+                    <div>
+                        <div className="flex flex-col sm:flex-row gap-2 mt-8 mb-8">
                             <div
-                                className={`border border-eigen-med-blue-2 bg-eigen-med-blue-2 rounded-lg flex-1 justify-center items-center py-4 ${ibm.className}`}
+                                className={`border border-eigen-med-blue-2 bg-eigen-med-blue-2 rounded-lg flex-1 justify-center items-center py-4 px-4 ${ibm.className}`}
                             >
-                                <div className="text-center text-eigen-light-blue mb-2">TVL</div>
+                                <div className="text-center text-eigen-light-blue md:mb-2">TVL</div>
                                 <div className="text-center text-white  text-xl">{TVL} ETH</div>
                             </div>
                             <div
                                 className={`border border-eigen-med-blue-2 bg-eigen-med-blue-2 rounded-lg flex-1 justify-center items-center py-4 ${ibm.className}`}
                             >
-                                <div className="text-center text-eigen-light-blue mb-2">AVSs</div>
+                                <div className="text-center text-eigen-light-blue md:mb-2">
+                                    AVSs
+                                </div>
                                 <div className="text-center text-white text-xl">{AVSs}</div>
                             </div>
                             <div
                                 className={`border border-eigen-med-blue-2 bg-eigen-med-blue-2 rounded-lg flex-1 justify-center items-center py-4 ${ibm.className}`}
                             >
-                                <div className="text-center text-eigen-light-blue mb-2">
+                                <div className="text-center text-eigen-light-blue md:mb-2">
                                     Operators
                                 </div>
                                 <div className="text-center text-white text-xl">{Operators}</div>
@@ -305,63 +307,67 @@ export default function Home() {
                             <div
                                 className={`border border-eigen-med-blue-2 bg-eigen-med-blue-2 rounded-lg flex-1 justify-center items-center py-4 ${ibm.className}`}
                             >
-                                <div className="text-center text-eigen-light-blue mb-2">
+                                <div className="text-center text-eigen-light-blue md:mb-2">
                                     Stakers
                                 </div>
                                 <div className="text-center text-white text-xl">{Stakers}</div>
                             </div>
                         </div>
-                        <table className={`w-full ${ibm.className}`}>
-                            <thead className="bg-eigen-light-blue text-eigen-dark-blue text-xs">
-                                <tr>
-                                    <th className="text-left py-2 px-4">Tx</th>
-                                    <th className="text-left py-2 px-4">Event</th>
-                                    <th className="text-left py-2 px-4">Details</th>
-                                    <th className="text-left py-2 px-4">Block</th>
-                                    <th className="text-left py-2 px-4">Time (UTC)</th>
-                                </tr>
-                            </thead>
-                            <tbody className="border-b border-gray-700 text-xs">
-                                {events.map((event, index) => (
-                                    <tr
-                                        key={index}
-                                        className="border-t border-gray-700 hover:bg-eigen-med-blue-3"
-                                    >
-                                        <td className="py-2 px-4">
-                                            <a
-                                                href={`https://etherscan.io/tx/${event.transactionHash}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-blue-300 underline"
-                                            >
-                                                {formatTxHash(event.transactionHash)}
-                                            </a>
-                                        </td>
-                                        <td className="py-2 px-4">{event.event}</td>
-                                        <td className="py-2 px-4">
-                                            {ReactHtmlParser(formatMessageWithLinks(event.message))}
-                                        </td>
-                                        <td className="py-2 px-4">
-                                            <a
-                                                href={`https://etherscan.io/block/${event.blockNumber}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-blue-300 underline"
-                                            >
-                                                {event.blockNumber}
-                                            </a>
-                                        </td>
-                                        <td className="py-2 px-4">
-                                            {formatDate(event.created_at)}
-                                        </td>
+                        <div className="overflow-x-auto">
+                            <table className={`w-full ${ibm.className}`}>
+                                <thead className="bg-eigen-light-blue text-eigen-dark-blue text-xs">
+                                    <tr>
+                                        <th className="text-left py-2 px-4">Tx</th>
+                                        <th className="text-left py-2 px-4">Event</th>
+                                        <th className="text-left py-2 px-4">Details</th>
+                                        <th className="text-left py-2 px-4">Block</th>
+                                        <th className="text-left py-2 px-4">Time (UTC)</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody className="border-b border-gray-700 text-xs">
+                                    {events.map((event, index) => (
+                                        <tr
+                                            key={index}
+                                            className="border-t border-gray-700 hover:bg-eigen-med-blue-3"
+                                        >
+                                            <td className="py-2 px-4">
+                                                <a
+                                                    href={`https://etherscan.io/tx/${event.transactionHash}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-300 underline"
+                                                >
+                                                    {formatTxHash(event.transactionHash)}
+                                                </a>
+                                            </td>
+                                            <td className="py-2 px-4">{event.event}</td>
+                                            <td className="py-2 px-4">
+                                                {ReactHtmlParser(
+                                                    formatMessageWithLinks(event.message),
+                                                )}
+                                            </td>
+                                            <td className="py-2 px-4">
+                                                <a
+                                                    href={`https://etherscan.io/block/${event.blockNumber}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-blue-300 underline"
+                                                >
+                                                    {event.blockNumber}
+                                                </a>
+                                            </td>
+                                            <td className="py-2 px-4">
+                                                {formatDate(event.created_at)}
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 )}
-                <div className="flex justify-between items-center py-4 text-xs font-repro">
-                    <div>
+                <div className="flex flex-col md:flex-row justify-between items-center py-4 text-xs font-repro">
+                    <div className="mt-4 mb-4 md:mt-0 md:mb-0">
                         Show{" "}
                         <select
                             value={perPage}
@@ -415,10 +421,15 @@ export default function Home() {
                 className={`bg-eigen-very-dark-blue p-6 flex items-center justify-center ${ibm.className}`}
             >
                 <div className="text-center text-xs">
-                    Made with ❤️ for{" "}
+                    Made with ❤️ for Ethereum |{" "}
                     <span className="underline text-eigen-light-blue">
-                        <a href="https://eigenlayer.xyz" target="_blank" rel="noopener noreferrer">
-                            EigenLayer
+                        <a
+                            href="https://github.com/gowthamsundaresan/eigenscan"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            {" "}
+                            GitHub
                         </a>
                     </span>
                 </div>
