@@ -41,7 +41,19 @@ async function fetchKPIs() {
     try {
         console.log("Fetching TVL data with Puppeteer...")
 
-        const browser = await puppeteer.launch()
+        const browser = await puppeteer.launch({
+            args: [
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-accelerated-2d-canvas",
+                "--no-first-run",
+                "--no-zygote",
+                "--single-process",
+                "--disable-gpu",
+            ],
+            headless: true,
+        })
         const page = await browser.newPage()
         await page.goto(tvlUrl, { waitUntil: "networkidle0" })
         await page.waitForSelector(
